@@ -1,32 +1,29 @@
 package com.addressbook;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AddressBook {
 
-    public enum modifyBy{
-        SEARCH_BY_FIRST_NAME,SEARCH_BY_LAST_NAME,SEARCH_BY_CITY,SEARCH_BY_STATE,SEARCH_BY_PHONENUMBER,SEARCH_BY
+    public enum SearchUpdateAndDeleteBy {
+        SORT_BY_FIRST_NAME,SORT_BY_LAST_NAME,SORT_BY_CITY,SORT_BY_STATE,SORT_BY_PHONENUMBER,
+        SORT_BY_PINCODE,
     }
 
     List<Person> personDetails=null;
-
+    AddContact addContact=null;
     public AddressBook() {
-        personDetails= new ArrayList<>();
+        AddContact addContact=new AddContact();
+      //  personDetails=addContact.contactDetails;
     }
 
     public void addPerson(String firstName, String lastName, String address, long pincode, String city,
                           String state, long phoneNumber){
-        Person person = new Person(firstName, lastName, address,pincode,city,state,phoneNumber);
-        personDetails.add(person);
+        personDetails=addContact.addContact(firstName, lastName, address,pincode,city,state,phoneNumber);
     }
 
-    public String printAll(){
-        List<Person> sortedList=personDetails.stream().sorted(Comparator.comparing(Person::getFirstName)
-                .reversed()).collect(Collectors.toList());
-       return sortedList.toString();
+    public String printAll(AddressBook.SearchUpdateAndDeleteBy search){
+       return SortContact.searchBy(search,personDetails);
     }
 
     public int getNoOfRecordsInTheAddressBook(){

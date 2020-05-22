@@ -19,12 +19,24 @@ private long phoneNumber;
         this.phoneNumber = phoneNumber;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
     public String getLastName() {
         return lastName;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getAddress() {
@@ -34,7 +46,6 @@ private long phoneNumber;
     public long getPincode() {
         return pincode;
     }
-
 
     public void updateLastName(String lastName) {
         this.lastName = lastName;
