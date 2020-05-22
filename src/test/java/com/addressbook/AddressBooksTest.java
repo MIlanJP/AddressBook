@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class AddressBooksTest {
     @Test
     public void Added2Contacts_shouldReturnContactinString() {
@@ -13,10 +15,11 @@ public class AddressBooksTest {
         addressBook.addPerson("Min","qwety",
                 "HSRLayout",12896l,"Bangalore","Karnataka",4561327891L);
 
-        Assert.assertEquals("[Person{firstName='Milan', lastName='gowda', address='', pincode=77667, " +
-                "city='Bangalore', state='Karnataka', phoneNumber=78945613}, Person{firstName='Min', lastName='qwety', " +
-                "address='HSRLayout', pincode=12896, city='Bangalore', state='Karnataka', " +
-                "phoneNumber=4561327891}]",addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME));
+        Assert.assertEquals("[{\"firstName\":\"Milan\",\"lastName\":\"gowda\",\"address\":\"\",\"pincode\":77667" +
+                ",\"city\":\"Bangalore\",\"state\":\"Karnataka\",\"phoneNumber\":78945613},{\"firstName\":\"Min\",\"" +
+                "lastName\":\"qwety\",\"address\":\"HSRLayout\",\"pincode\":12896,\"city\":\"Bangalore\",\"state\":\"" +
+                "Karnataka\",\"phoneNumber\":4561327891}]",
+                addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME));
     }
 
     @Test
@@ -58,6 +61,40 @@ public class AddressBooksTest {
         Assert.assertEquals("Anand",sortedData[0].getFirstName());
     }
 
+    @Test
+    public void deletingaContactAfterAddind_MustDeleteThatContact() {
+        AddressBook addressBook= new AddressBook();
+        addressBook.addPerson("Milan","gowda","",77667l,
+                "Bangalore","Karnataka",78945613L);
+        addressBook.addPerson("Rakesh","kumar",
+                "HSRLayout",12896l,"Bangalore","Karnataka",4561327891L);
+        addressBook.addPerson("Rahul","kumar",
+                "HSRLayout",12896l,"Mangaore","Goa",4561327l);
+        addressBook.addPerson("Anand","kumar",
+                "HSRLayout",12896l,"Mangaore","Goa",4561327l);
+        addressBook.deleteContact("Anand");
+        String sortedListByFirstName = addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME);
+        Person[] sortedData=new Gson().fromJson(sortedListByFirstName,Person[].class);
 
+        Assert.assertEquals("Milan",sortedData[0].getFirstName());
+    }
+
+    @Test
+    public void searchMatches() {
+        AddressBook addressBook= new AddressBook();
+        addressBook.addPerson("Milan","gowda","",77667l,
+                "Bangalore","Karnataka",78945613L);
+        addressBook.addPerson("Rakesh","kumar",
+                "HSRLayout",12896l,"Bangalore","Karnataka",4561327891L);
+        addressBook.addPerson("Rahul","kumar",
+                "HSRLayout",12896l,"Mangaore","Goa",4561327l);
+        addressBook.addPerson("Anand","kumar",
+                "HSRLayout",12896l,"Mangaore","Goa",4561327l);
+        addressBook.deleteContact("Anand");
+        String sortedListByFirstName = addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME);
+        List personDetails=addressBook.searchPersonDetails("Ra");
+
+        Assert.assertEquals("Milan",personDetails.toString());
+    }
 
 }
