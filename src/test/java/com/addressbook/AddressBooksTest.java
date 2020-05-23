@@ -87,14 +87,31 @@ public class AddressBooksTest {
         addressBook.addPerson("Rakesh","kumar",
                 "HSRLayout",12896l,"Bangalore","Karnataka",4561327891L);
         addressBook.addPerson("Rahul","kumar",
-                "HSRLayout",12896l,"Mangaore","Goa",4561327l);
+                "HSRLayout",12896l,"Mangaore","Goa",45627l);
         addressBook.addPerson("Anand","kumar",
                 "HSRLayout",12896l,"Mangaore","Goa",4561327l);
         addressBook.deleteContact("Anand");
         String sortedListByFirstName = addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME);
-        List personDetails=addressBook.searchPersonDetails("Ra");
+        Person[] personDetails= addressBook.searchPersonDetails("Ra").toArray(new Person[0]);
 
-        Assert.assertEquals("Milan",personDetails.toString());
+        Assert.assertEquals("Rahul",personDetails[1].getFirstName());
+        Assert.assertEquals("Rakesh",personDetails[0].getFirstName());
     }
 
+    @Test
+    public void givenContactsInfo_whenUpdated_shouldReflectTheChangedData() {
+        AddressBook addressBook= new AddressBook();
+        addressBook.addPerson("Milan","gowda","",77667l,
+                "Bangalore","Karnataka",78945613L);
+        addressBook.addPerson("Rakesh","kumar",
+                "HSRLayout",12896l,"Bangalore","Karnataka",4561327891L);
+        addressBook.addPerson("Rahul","kumar",
+                "HSRLayout",12896l,"Mangalore","Goa",45627l);
+        addressBook.addPerson("Anand","kumar",
+                "HSRLayout",12896l,"Mangalore","Goa",4561327l);
+        addressBook.updateContact(AddressBook.SearchUpdateAndDeleteBy.UPDATE_CITY,"Anand","Mysore");
+        String sortedListByFirstName = addressBook.printAll(AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME);
+        Person[] personDetails= addressBook.searchPersonDetails("Anand").toArray(new Person[0]);
+        Assert.assertEquals("Mysore",personDetails[0].getCity());
+    }
 }

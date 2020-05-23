@@ -12,7 +12,7 @@ public class SortContact {
    static EnumMap<AddressBook.SearchUpdateAndDeleteBy, Comparator<Person>> enumMap
             =new EnumMap(AddressBook.SearchUpdateAndDeleteBy.class);
 
-public static String searchBy(AddressBook.SearchUpdateAndDeleteBy sortingByColumn, List<Person> contactDetails){
+public static String sortBy(AddressBook.SearchUpdateAndDeleteBy sortingByColumn, List<Person> contactDetails){
     enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME,
             Comparator.comparing(sortBy->sortBy.getFirstName()));
     enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_LAST_NAME,
