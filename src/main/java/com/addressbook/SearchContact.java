@@ -10,7 +10,7 @@ public class SearchContact {
         List <Person> matchedDetails = new ArrayList<Person>();
         for (int i = 0; i < addressBook.size(); i++) {
             Person person = addressBook.get(i);
-            if (person.getFirstName().contains(nameMatch)) {
+            if (person.getFirstName().toLowerCase().contains(nameMatch.toLowerCase())) {
                 matchedDetails.add(person);
             }
         }

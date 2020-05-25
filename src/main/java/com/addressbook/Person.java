@@ -1,15 +1,17 @@
 package com.addressbook;
 
-public class Person  { private String firstName;
+public class Person {
+
+private String firstName;
 private String lastName;
 private String address;
-private long pincode;
+private String pincode;
 private String city;
 private String state;
-private long phoneNumber;
+private String phoneNumber;
 
-    public Person(String firstName, String lastName, String address, long pincode, String city,
-                  String state, long phoneNumber) {
+    public Person(String firstName, String lastName, String address, String pincode, String city,
+                  String state, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -35,7 +37,7 @@ private long phoneNumber;
         return lastName;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -43,7 +45,7 @@ private long phoneNumber;
         return address;
     }
 
-    public long getPincode() {
+    public String getPincode() {
         return pincode;
     }
 
@@ -55,7 +57,7 @@ private long phoneNumber;
         this.address = address;
     }
 
-    public void updatePincode(long pincode) {
+    public void updatePincode(String pincode) {
         this.pincode = pincode;
     }
 
@@ -67,10 +69,10 @@ private long phoneNumber;
         this.state = state;
     }
 
-    public void updatePhoneNumber(long phoneNumber) {
+    public Person updatePhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        return this;
     }
-
 
     @Override
     public String toString() {

@@ -10,42 +10,36 @@ public class AddressBook {
         SORT_BY_PINCODE,
         UPDATE_LAST_NAME, UPDATE_CITY, UPDATE_STATE, UPDATE_PHONENUMBER,
         UPDATE_PINCODE,UPDATE_ADDRESS,
-        UPDATE,SEARCH,DELETE,SORT
     }
 
-    List<Person> addressBook=new ArrayList<Person>();
-    AddContact addContact=null;
+    IAddressBookBuilder iAddressBookBuilder =AddressBookBuilderFactory.createAddressBookControlller();
 
-    public AddressBook() {
-       addContact=new AddContact();
-    }
+    List<Person> addressBook=null;
 
-    public void addPerson(String firstName, String lastName, String address, long pincode, String city,
-                          String state, long phoneNumber){
-        addressBook=addContact.addContact(firstName, lastName, address,pincode,city,state,phoneNumber,addressBook);
+
+    public void addPerson(String firstName, String lastName, String address, String pincode, String city,
+                          String state, String phoneNumber){
+       iAddressBookBuilder.addPerson(firstName, lastName, address,pincode,city,state,phoneNumber);
     }
 
     public String printAll(AddressBook.SearchUpdateAndDeleteBy search){
-       return SortContact.sortBy(search,addressBook);
+       return iAddressBookBuilder.printAll(search);
     }
 
     public int getNoOfRecordsInTheAddressBook(){
-        return addressBook.size();
+        return iAddressBookBuilder.getNoOfRecordsInTheAddressBook();
     }
 
     public void deleteContact(String firstName){
-        addressBook=new  DeleteContact().delete(addressBook,firstName);
+        iAddressBookBuilder.deleteContact(firstName);
     }
 
-    public void updateContact(SearchUpdateAndDeleteBy updateBy,String firstName,Object modify){
-        addressBook= new UpdateContact().update(addressBook,updateBy,firstName,modify);
+    public void updateContact(SearchUpdateAndDeleteBy updateBy,String firstName,String modify){
+        iAddressBookBuilder.updateContact(updateBy,firstName,modify);
     }
 
     public List<Person> searchPersonDetails(String firstName){
-        SearchContact searchContact=new SearchContact();
-    return searchContact.search(addressBook,firstName);
+    return iAddressBookBuilder.searchPersonDetails(firstName);
     }
-
-
 
 }

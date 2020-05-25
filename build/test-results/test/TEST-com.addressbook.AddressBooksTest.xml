@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.addressbook.AddressBooksTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-23T04:02:56" hostname="KYOOLBABA" time="0.085">
+<testsuite name="com.addressbook.AddressBooksTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-05-25T13:27:57" hostname="KYOOLBABA" time="0.097">
   <properties/>
-  <testcase name="givenContactsInfo_whenUpdated_shouldReflectTheChangedData" classname="com.addressbook.AddressBooksTest" time="0.085"/>
+  <testcase name="searchMatches" classname="com.addressbook.AddressBooksTest" time="0.085"/>
+  <testcase name="givenContacts_WhenSorted_shouldReturnFirstNameAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.005"/>
+  <testcase name="givenContactsInfo_whenUpdatedState_shouldReturnCorrectState" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="Added2Contacts_shouldReturnContactinString" classname="com.addressbook.AddressBooksTest" time="0.001"/>
+  <testcase name="given2Contacts_whenAdded_shouldReturncountAs2" classname="com.addressbook.AddressBooksTest" time="0.001"/>
+  <testcase name="deletingaContactAfterAddind_MustDeleteThatContact" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenContactsInfo_whenUpdatedCity_shouldReturnCorrectCity" classname="com.addressbook.AddressBooksTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

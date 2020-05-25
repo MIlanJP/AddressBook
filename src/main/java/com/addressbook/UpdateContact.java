@@ -6,22 +6,22 @@ public class UpdateContact {
 
     public static List<Person> update(List<Person> addressBook,
                                       AddressBook.SearchUpdateAndDeleteBy updateBy ,
-                                      String firstName, Object modify) {
+                                      String firstName, String modify) {
         for (int i = 0; i < addressBook.size(); i++) {
             Person person = addressBook.get(i);
             if (firstName.equals(person.getFirstName())) {
                 if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_LAST_NAME)) {
-                    person.updateLastName((String) modify);
+                    person.updateLastName(modify);
                 } else if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_PHONENUMBER)) {
-                    person.updatePhoneNumber((long) modify);
+                    person.updatePhoneNumber(modify);
                 } else if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_PINCODE)) {
-                    person.updatePincode((long) modify);
+                    person.updatePincode( modify);
                 } else if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_CITY)) {
-                    person.updateCity((String) modify);
+                    person.updateCity( modify);
                 } else if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_STATE)) {
-                    person.updateState((String) modify);
+                    person.updateState( modify);
                 } else if (updateBy.equals(AddressBook.SearchUpdateAndDeleteBy.UPDATE_ADDRESS)) {
-                    person.updateAddress((String) modify);
+                    person.updateAddress( modify);
                 }
             }
         }
