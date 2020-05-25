@@ -9,21 +9,21 @@ import java.util.stream.Collectors;
 
 public class SortContact {
 
-   static EnumMap<AddressBook.SearchUpdateAndDeleteBy, Comparator<Person>> enumMap
-            =new EnumMap(AddressBook.SearchUpdateAndDeleteBy.class);
+   static EnumMap<SearchUpdateAndDeleteBy, Comparator<Person>> enumMap
+            =new EnumMap(SearchUpdateAndDeleteBy.class);
 
-public static String sortBy(AddressBook.SearchUpdateAndDeleteBy sortingByColumn, List<Person> contactDetails){
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME,
+public static String sortBy(SearchUpdateAndDeleteBy sortingByColumn, List<Person> contactDetails){
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_FIRST_NAME,
             Comparator.comparing(sortBy->sortBy.getFirstName()));
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_LAST_NAME,
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_LAST_NAME,
             Comparator.comparing(sortBy->sortBy.getLastName()));
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_CITY,
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_CITY,
             Comparator.comparing(sortBy->sortBy.getCity()));
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_STATE,
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_STATE,
             Comparator.comparing(sortBy->sortBy.getState()));
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_PHONENUMBER,
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_PHONENUMBER,
             Comparator.comparing(sortBy->sortBy.getPhoneNumber()));
-    enumMap.put( AddressBook.SearchUpdateAndDeleteBy.SORT_BY_PINCODE,
+    enumMap.put( SearchUpdateAndDeleteBy.SORT_BY_PINCODE,
             Comparator.comparing(sortBy->sortBy.getPincode()));
     return new Gson().toJson(  contactDetails.stream().sorted(enumMap.get(sortingByColumn)
     ).collect(Collectors.toList()));

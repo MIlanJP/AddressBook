@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.addressbook.AddressBooksTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-05-25T13:27:57" hostname="KYOOLBABA" time="0.097">
+<testsuite name="com.addressbook.AddressBooksTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-05-25T15:05:43" hostname="KYOOLBABA" time="0.136">
   <properties/>
-  <testcase name="searchMatches" classname="com.addressbook.AddressBooksTest" time="0.085"/>
-  <testcase name="givenContacts_WhenSorted_shouldReturnFirstNameAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.005"/>
-  <testcase name="givenContactsInfo_whenUpdatedState_shouldReturnCorrectState" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenContacts_WhenSorted_shouldReturnFirstNameAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.1"/>
+  <testcase name="givenContactsInfo_whenUpdatedAddress_shouldReturnUpdatedAddress" classname="com.addressbook.AddressBooksTest" time="0.009"/>
+  <testcase name="givenContactsInfo_whenUpdatedLastName_shouldReturnUpdatedLastName" classname="com.addressbook.AddressBooksTest" time="0.003"/>
+  <testcase name="givenNameToDeleteAContact_whenPresent_shouldDeleteThatContact" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenContacts_WhenSortedAccorrdingtoState_shouldReturnStateAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.003"/>
+  <testcase name="givenContactsInfo_whenUpdatedPhoneNumber_shouldReturnUpdatedPhoneNumber" classname="com.addressbook.AddressBooksTest" time="0.001"/>
   <testcase name="Added2Contacts_shouldReturnContactinString" classname="com.addressbook.AddressBooksTest" time="0.001"/>
+  <testcase name="givenContacts_WhenSortedAccorrdingtoCity_shouldReturnCityAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenAWord_whenSearch_shouldGiveAlistOfMatches" classname="com.addressbook.AddressBooksTest" time="0.002"/>
   <testcase name="given2Contacts_whenAdded_shouldReturncountAs2" classname="com.addressbook.AddressBooksTest" time="0.001"/>
-  <testcase name="deletingaContactAfterAddind_MustDeleteThatContact" classname="com.addressbook.AddressBooksTest" time="0.002"/>
-  <testcase name="givenContactsInfo_whenUpdatedCity_shouldReturnCorrectCity" classname="com.addressbook.AddressBooksTest" time="0.001"/>
+  <testcase name="givenContactsInfo_whenUpdatedState_shouldReturnUpdatedState" classname="com.addressbook.AddressBooksTest" time="0.001"/>
+  <testcase name="givenContactInfo_whenUpdatedCity_shouldReturnUpdatedCity" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenContactsInfo_whenUpdatedPincode_shouldReturnUpdatedPincode" classname="com.addressbook.AddressBooksTest" time="0.002"/>
+  <testcase name="givenContacts_WhenSortedAccorrdingtoLastName_shouldReturnLastNameAlphabetically" classname="com.addressbook.AddressBooksTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

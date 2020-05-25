@@ -5,11 +5,14 @@ import java.util.List;
 
 public class AddressBookBuilder implements IAddressBookBuilder {
 
-    List<Person> addressBook=null;
-    AddContact addContact=null;
+    static List<Person> addressBook=null;
 
     public AddressBookBuilder() {
         this.addressBook = new ArrayList<Person>();
+    }
+
+    public AddressBookBuilder(List<Person> list) {
+        this.addressBook = list;
     }
 
     public List<Person> addPerson(String firstName, String lastName, String address, String pincode, String city,
@@ -19,19 +22,19 @@ public class AddressBookBuilder implements IAddressBookBuilder {
     }
 
     @Override
-    public String printAll(AddressBook.SearchUpdateAndDeleteBy search){
+    public String printAll(SearchUpdateAndDeleteBy search){
         return SortContact.sortBy(search,addressBook);
     }
 
-    public int getNoOfRecordsInTheAddressBook(){
-        return addressBook.size();
+    public List<Person> getNoOfRecordsInTheAddressBook(){
+        return addressBook;
     }
 
     public void deleteContact(String firstName){
         addressBook=DeleteContact.delete(addressBook,firstName);
     }
 
-    public void updateContact(AddressBook.SearchUpdateAndDeleteBy updateBy, String firstName, String modify){
+    public void updateContact(SearchUpdateAndDeleteBy updateBy, String firstName, String modify){
         addressBook= UpdateContact.update(addressBook,updateBy,firstName,modify);
     }
 

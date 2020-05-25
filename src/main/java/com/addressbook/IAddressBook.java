@@ -1,18 +1,13 @@
 package com.addressbook;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AddressBook {
+public class IAddressBook {
+    IAddressBookBuilder iAddressBookBuilder;
 
-    public enum SearchUpdateAndDeleteBy {
-        SORT_BY_FIRST_NAME,SORT_BY_LAST_NAME,SORT_BY_CITY,SORT_BY_STATE,SORT_BY_PHONENUMBER,
-        SORT_BY_PINCODE,
-        UPDATE_LAST_NAME, UPDATE_CITY, UPDATE_STATE, UPDATE_PHONENUMBER,
-        UPDATE_PINCODE,UPDATE_ADDRESS,
+    public IAddressBook() {
+        IAddressBookBuilder iAddressBookBuilder =AddressBookBuilderFactory.createAddressBookControlller();
     }
-
-    IAddressBookBuilder iAddressBookBuilder =AddressBookBuilderFactory.createAddressBookControlller();
 
     List<Person> addressBook=null;
 
@@ -22,12 +17,12 @@ public class AddressBook {
        iAddressBookBuilder.addPerson(firstName, lastName, address,pincode,city,state,phoneNumber);
     }
 
-    public String printAll(AddressBook.SearchUpdateAndDeleteBy search){
+    public String printAll(SearchUpdateAndDeleteBy search){
        return iAddressBookBuilder.printAll(search);
     }
 
     public int getNoOfRecordsInTheAddressBook(){
-        return iAddressBookBuilder.getNoOfRecordsInTheAddressBook();
+        return iAddressBookBuilder.getNoOfRecordsInTheAddressBook().size();
     }
 
     public void deleteContact(String firstName){
